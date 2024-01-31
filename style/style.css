@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    background: linear-gradient(135deg, #80c0eb, #c785e0) no-repeat center center fixed;
+}
+
+.container {
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.bus_line {
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    background-color: #161616;
+    z-index: -1;
+}
+
+.top_line {
+    top: 5%;
+}
+
+.bottom_line1 {
+    bottom: 40%;
+}
+
+.bottom_line2 {
+    bottom: 25%;
+}
+
+.bottom_line3 {
+    bottom: 10%;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.bus {
+    background: #f7941e;
+    max-width: 550px;
+    height: 15rem;
+    margin: 0.165rem auto;
+    top: -30px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0.3125rem 0.625rem rgba(0, 0, 0, 1); 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: -1;
+    animation: bounce 1s infinite;
+    transition: all 0.2s ease-in-out; 
+}
+
+.bus_windows {
+    background-color: #b3d7ff;
+    width: 80px;
+    height: 70px;
+    border-radius: 10px;
+    margin-top: -90px; 
+    border: 2px solid #6d6e71;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translate(100%, -50%);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-180%, -210%); 
+    }
+}
+
+.person {
+    position: absolute;
+    width: 200px;
+    height: 230px;
+    background: url(https://cdni.iconscout.com/illustration/premium/thumb/young-man-walking-8669255-6923947.png)no-repeat center center / contain fixed;   
+    top: 50%;
+    left: 50%;
+    transform: translate(100%, -50%);
+    display: none;
+    z-index: -1;
+}
+
+.bus_door {
+    background-color: #7f8083;
+    width: 90px;
+    height: 210px;
+    top: 5px;
+    right: 10px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    margin-top: 40px;
+    border: 2px solid #333;
+    position: relative;
+    overflow: hidden;
+}
+
+.bus_door::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;   
+}
+
+.bus_wheels {
+    width: 100%; 
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: -75px;
+    animation: bounce 1s infinite; 
+}
+
+.bus_wheel {
+    width: 100px; 
+    height: 100px; 
+    background: url(https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/3152526/wheel-clipart-md.png) no-repeat center center;
+    background-size: cover;
+    border-radius: 50%;
+    box-shadow: 0 0.3125rem 0.625rem rgba(0, 0, 0, 0.2); 
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.road {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    margin-top: -75px; 
+    /*margin-left: -50%; */
+    background: #525252;
+    transform-origin: bottom;
+    transform-style: preserve-3d;
+    transform: perspective(500px) rotateX(30deg);
+    z-index: -1;
+    transition: all 0.2s ease-in-out;
+}
+
+.road::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(90deg, #fff 0%, #fff 70%, #525252 70%, #525252 100%);
+    background-size: 120px;
+    transition: transform 1s ease;
+}
+
+.road_animation::before {
+    animation: moving 0.6s linear infinite;
+}
+
+@keyframes moving {
+    0% {
+        background-position: 0px;
+    }
+    100% {
+        background-position: -120px;
+    }
+}
+
+.road::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    background: #333;
+    bottom: -30px;
+    transform-origin: top;
+    transform: perspective(500px) rotateX(-25deg);
+    box-shadow: 0 0.3125rem 0.625rem rgba(0, 0, 0, 1); 
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 55px;
+}
+
+.startBtn, .stopBtn, .enterBtn {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    background: radial-gradient(#fff, #ccc);
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1), 0 0.375rem 0.375rem rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.startBtn:hover, .stopBtn:hover, .enterBtn:hover {
+    transform: scale(1.1);
+    box-shadow: none; 
+    border: none;
+}
